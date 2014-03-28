@@ -1,0 +1,21 @@
+{
+	"name": "b-b3rn4rd/phplame",
+	"description": "PHP wrapper for LAME (MP3 encoder)",
+	"keywords": ["lame-php", "mp3", "encoder", "mp3 encoder", "wrapper"],
+	"licence": "Unlicense",
+	"authors": [
+		{ "name": "Bernard Baltrusaitis", "email": "bernard@runawaylover.info" }
+	],
+	"require": {
+		"php": ">=5.3"
+	},
+  "require-dev": {
+      "phpunit/phpunit": ">=3.7",
+      "mikey179/vfsStream": ">=1"
+  },
+  "autoload": {
+		"psr-0": {  
+      "Lame\\": "lib/"
+    }
+	}
+}

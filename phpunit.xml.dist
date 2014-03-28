@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit colors="true" bootstrap="vendor/autoload.php">
+  <testsuites>
+    <testsuite name="PHP Lame Test Suite">
+      <directory>./test</directory>
+    </testsuite>
+  </testsuites>
+  <filter>
+    <whitelist>
+      <directory>./lib</directory>
+    </whitelist>
+  </filter>
+  <logging>
+    <log type="coverage-html" target="build/coverage" highlight="true"/>
+    <log type="coverage-clover" target="build/logs/clover.xml"/>
+  </logging>
+</phpunit>
