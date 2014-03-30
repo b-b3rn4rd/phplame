@@ -13,7 +13,7 @@ Install PHP LAME wrapper using Composer:
 ```json
 {
     "require": {
-        "b-b3rn4rd/phplame": "*"
+        "b-b3rn4rd/phplame": "dev-master"
     }
 }
 ```
