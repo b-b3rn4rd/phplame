@@ -3,7 +3,7 @@ PHP LAME
 [![Build Status](https://travis-ci.org/b-b3rn4rd/phplame.svg?branch=master)](https://travis-ci.org/b-b3rn4rd/phplame)
 [![Coverage Status](https://coveralls.io/repos/b-b3rn4rd/phplame/badge.png?branch=master)](https://coveralls.io/r/b-b3rn4rd/phplame?branch=master)
 
-PHP LAME is a php wrapper for [LAME][1] MP3 encoder. It provides convinient interface to encode wav file(s) into mp3.
+PHP LAME is a php wrapper for [LAME][1] MP3 encoder. It provides convenient interface to encode wav file(s) into mp3.
 
 **In order to use this library you will need to download & install LAME. Read [here][2] how to install it.** 
   
