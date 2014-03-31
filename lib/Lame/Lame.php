@@ -129,7 +129,6 @@ class Lame
      */
     protected function executeCommand($command)
     {
-        var_dump($command);
         $output = '';
         $handle = popen("{$command} 2>&1", 'r');
         
