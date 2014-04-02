@@ -140,8 +140,8 @@ class Lame
         
         if (0 !== $returnCode) {
             throw new \RuntimeException(
-                sprintf('LAME execution error! command: `%s`, error: `%s`', 
-                    $command, $output));
+                sprintf('LAME execution error! command: `%s`, error: `%s`, code: %d', 
+                    $command, $output, $returnCode));
         }
         
         return true;
@@ -158,7 +158,7 @@ class Lame
     protected function getFilenames($inputfile, $outputfile)
     {
         $filenames  = array();
-        $inputfiles = glob($inputfile);
+        $inputfiles = glob($inputfile, GLOB_BRACE);
         
         if (!is_array($inputfiles)) {
             throw new \InvalidArgumentException(
