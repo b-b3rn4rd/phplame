@@ -23,7 +23,13 @@ class Lame
      * @var \Lame\Settings 
      */
     protected $settings = null;
-    
+
+    /**
+     * Whether to perform is_executable and is_readable checks on lame binary.
+     * On some PHP configs these checks fails but command can be executed nevertheless.
+     * @var bool
+     */
+    protected $executableChecks = true;
     /**
      * Create new instance of LAME wrapper
      * 
@@ -56,7 +62,22 @@ class Lame
     {
         return $this->settings;
     }
-    
+
+    /**
+     * @param bool $executableChecks Whether to perform is_executable and is_readable checks on lame binary.
+     */
+    public function setExecutableChecks($executableChecks)
+    {
+        $this->executableChecks = $executableChecks;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getExecutableChecks()
+    {
+        return $this->executableChecks;
+    }
     /**
      * Encode given wav file(s) into mp3 file(s).
      * $inputfile can be a location to a single file or a pattern
@@ -101,17 +122,18 @@ class Lame
     protected function prepareCommand($inputfile, $outputfile)
     {
         $binary = $this->getBinary();
-        
-        if (!is_executable($binary)) {
-            throw new \InvalidArgumentException(
-                sprintf('LAME binary path: `%s` is invalid or not executable', $binary));
+
+        if ($this->executableChecks) {
+            if (!is_executable($binary)) {
+                throw new \InvalidArgumentException(
+                    sprintf('LAME binary path: `%s` is invalid or not executable', $binary));
+            }
+
+            if (!is_readable($inputfile)) {
+                throw new \InvalidArgumentException(
+                    sprintf('Input file `%s` is not readable', $inputfile));
+            }
         }
-        
-        if (!is_readable($inputfile)) {
-            throw new \InvalidArgumentException(
-                sprintf('Input file `%s` is not readable', $inputfile));
-        }
-        
         $command = sprintf('%s ', $binary);
         $command .= $this->getSettings()->buildOptions();
         $command .= sprintf(' %s %s', escapeshellarg($inputfile), 
